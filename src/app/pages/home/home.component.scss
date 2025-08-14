@@ -1,0 +1,98 @@
+.onepiece-container {
+  padding: 20px;
+  background: linear-gradient(180deg, #fceabb 0%, #f8b500 100%);
+  min-height: 100vh;
+  font-family: 'Treasure Map Deadhand', cursive; // font phong cách hải tặc (có thể import từ web)
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.onepiece-card {
+  background: #fff8e7;
+  border: 4px solid #d4a017;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .mat-card-header {
+    border-bottom: 2px dashed #d4a017;
+    padding-bottom: 5px;
+  }
+
+  .avatar {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #d4a017;
+    border-radius: 50%;
+  }
+
+  .name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #8b0000;
+  }
+
+  .role {
+    color: #555;
+    font-style: italic;
+  }
+
+  .character-img {
+    height: 300px;
+    object-fit: contain;
+    border-bottom: 3px solid #d4a017;
+  }
+
+  .info {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+
+    strong {
+      color: #8b0000;
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff3d4;
+  border: 2px solid #d4a017;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .no-fruit {
+    font-size: 0.65rem;
+    text-align: center;
+    color: #666;
+    padding: 3px;
+  }
+}
+

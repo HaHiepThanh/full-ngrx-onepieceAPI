@@ -1,0 +1,39 @@
+<div class="onepiece-container">
+  @if(isLoading$ | async) {
+    <mat-spinner></mat-spinner>
+  } @else {
+    <div class="card-grid">
+      @for (item of (onePieceList$ | async); track $index) {
+        <mat-card class="onepiece-card" appearance="outlined" (click)="navigateToDetail(item.id)">
+          <mat-card-header>
+            <div mat-card-avatar class="avatar">
+              @if(item.fruit?.filename) {
+                <img [src]="item.fruit?.filename" alt="{{ item.fruit?.name }}" />
+              } @else {
+                <span class="no-fruit">Không ăn trái ác quỷ</span>
+              }
+            </div>
+            <mat-card-title class="name">{{ item.name }}</mat-card-title>
+            <mat-card-subtitle class="role">{{ item.job }} - {{ item.crew?.name }}</mat-card-subtitle>
+          </mat-card-header>
+
+
+          <mat-card-content>
+            <div class="info">
+              <p><strong>Age:</strong> {{ item.age }}</p>
+              <p><strong>Height:</strong> {{ item.size }}</p>
+              <p><strong>Bounty:</strong> {{ item.bounty }} ฿</p>
+              <p><strong>Status:</strong> {{ item.status }}</p>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button mat-raised-button color="warn">LIKE ❤️</button>
+            <button mat-raised-button color="primary">SHARE 📜</button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+</div>
+
