@@ -11,7 +11,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import {authReducer} from './ngrx/auth/auth.reducer';
 import * as authEffects from './ngrx/auth/auth.effects';
-
+import {productReducer} from './ngrx/product/product.reducer';
+import * as productEffects from './ngrx/product/product.effects';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -20,10 +21,12 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       character: characterReducer,
       auth: authReducer,
+      product: productReducer,
     }),
     provideEffects(
       characterEffects,
-      authEffects
+      authEffects,
+      productEffects
     ),
     provideFirebaseApp(() => initializeApp({
       projectId: "buoi11-3669c", appId: "1:893427285820:web:ea1bfc5f3501d5596ee839",

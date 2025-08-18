@@ -15,6 +15,7 @@ import {
   MatCardTitle
 } from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
+import {ProductState} from '../../ngrx/product/product.state';
 
 @Component({
   selector: 'app-detail',
@@ -44,6 +45,7 @@ export class DetailComponent implements OnInit ,OnDestroy {
     private router:Router,
     private store:Store<{
       character: CharacterState,
+      product: ProductState,
     }>
   ){
     let {id} = this.activatedRoute.snapshot.params;

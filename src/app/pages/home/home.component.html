@@ -1,39 +1,80 @@
-<div class="onepiece-container">
-  @if(isLoading$ | async) {
-    <mat-spinner></mat-spinner>
-  } @else {
-    <div class="card-grid">
-      @for (item of (onePieceList$ | async); track $index) {
-        <mat-card class="onepiece-card" appearance="outlined" (click)="navigateToDetail(item.id)">
-          <mat-card-header>
-            <div mat-card-avatar class="avatar">
-              @if(item.fruit?.filename) {
-                <img [src]="item.fruit?.filename" alt="{{ item.fruit?.name }}" />
-              } @else {
-                <span class="no-fruit">Không ăn trái ác quỷ</span>
-              }
-            </div>
-            <mat-card-title class="name">{{ item.name }}</mat-card-title>
-            <mat-card-subtitle class="role">{{ item.job }} - {{ item.crew?.name }}</mat-card-subtitle>
-          </mat-card-header>
+<!--<div class="onepiece-container">-->
+<!--  @if(isLoading$ | async) {-->
+<!--    <mat-spinner></mat-spinner>-->
+<!--  } @else {-->
+<!--    <div class="card-grid">-->
+<!--      @for (item of (onePieceList$ | async); track $index) {-->
+<!--        <mat-card class="onepiece-card" appearance="outlined" (click)="navigateToDetail(item.id)">-->
+<!--          <mat-card-header>-->
+<!--            <div mat-card-avatar class="avatar">-->
+<!--              @if(item.fruit?.filename) {-->
+<!--                <img [src]="item.fruit?.filename" alt="{{ item.fruit?.name }}" />-->
+<!--              } @else {-->
+<!--                <span class="no-fruit">Không ăn trái ác quỷ</span>-->
+<!--              }-->
+<!--            </div>-->
+<!--            <mat-card-title class="name">{{ item.name }}</mat-card-title>-->
+<!--            <mat-card-subtitle class="role">{{ item.job }} - {{ item.crew?.name }}</mat-card-subtitle>-->
+<!--          </mat-card-header>-->
 
 
-          <mat-card-content>
-            <div class="info">
-              <p><strong>Age:</strong> {{ item.age }}</p>
-              <p><strong>Height:</strong> {{ item.size }}</p>
-              <p><strong>Bounty:</strong> {{ item.bounty }} ฿</p>
-              <p><strong>Status:</strong> {{ item.status }}</p>
-            </div>
-          </mat-card-content>
+<!--          <mat-card-content>-->
+<!--            <div class="info">-->
+<!--              <p><strong>Age:</strong> {{ item.age }}</p>-->
+<!--              <p><strong>Height:</strong> {{ item.size }}</p>-->
+<!--              <p><strong>Bounty:</strong> {{ item.bounty }} ฿</p>-->
+<!--              <p><strong>Status:</strong> {{ item.status }}</p>-->
+<!--            </div>-->
+<!--          </mat-card-content>-->
 
-          <mat-card-actions>
-            <button mat-raised-button color="warn">LIKE ❤️</button>
-            <button mat-raised-button color="primary">SHARE 📜</button>
-          </mat-card-actions>
-        </mat-card>
-      }
-    </div>
-  }
+<!--          <mat-card-actions>-->
+<!--            <button mat-raised-button color="warn">LIKE ❤️</button>-->
+<!--            <button mat-raised-button color="primary">SHARE 📜</button>-->
+<!--          </mat-card-actions>-->
+<!--        </mat-card>-->
+<!--      }-->
+<!--    </div>-->
+<!--  }-->
+<!--</div>-->
+
+<div class="container" [formGroup]="productForm">
+
+  <mat-form-field appearance="outline">
+    <mat-label>id</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="id">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>name</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="name">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>description</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="description">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>price</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="price">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>image</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="image">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <button mat-button (click)="addProduct()">Submit</button>
+
 </div>
 

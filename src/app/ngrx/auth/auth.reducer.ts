@@ -33,6 +33,15 @@ export const authReducer = createReducer(
     }
   }),
 
+  on(AuthActions.loginSuccess, (state, {type})=>{
+    console.log(type);
+    return {
+      ...state,
+      isLoading: false,
+      error: null,
+    }
+  }),
+
   on(AuthActions.loginFailure, (state,{type,error})=>{
     console.log(type);
     return {
