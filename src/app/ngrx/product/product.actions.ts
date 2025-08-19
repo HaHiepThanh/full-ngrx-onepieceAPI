@@ -85,3 +85,15 @@ export const deleteProductSuccess = createAction(
 export const deleteProductFailure = createAction(
   '[Product] Delete Product Failure', props<{error: any}>()
 );
+
+// export const updateProduct = createAction(
+//   '[Product] Update Product', props<{product:ProductModel, idToken: string, id:string}>()
+// );
+//
+// export const updateProductSuccess = createAction(
+//   '[Product] Update Product Success', props<{product: ProductModel}>()
+// );
+//
+// export const updateProductFailure = createAction(
+//   '[Product] Update Product Failure', props<{error: any}>()
+// );

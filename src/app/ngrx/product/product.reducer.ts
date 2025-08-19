@@ -219,7 +219,34 @@ export const productReducer = createReducer(
       isLoading: false,
       error: error
     }
-  })
+  }),
 
+  // on(ProductActions.updateProduct, (state, {type, idToken, product, id}) => {
+  //   console.log(type);
+  //   return {
+  //     ...state,
+  //     productDetail: <ProductModel>{},
+  //     isLoading: true,
+  //     error: null
+  //   }
+  // }),
+  //
+  // on(ProductActions.updateProductSuccess, (state, {product, type}) => {
+  //   console.log(type);
+  //   return {
+  //     ...state,
+  //     productDetail: product,
+  //     isLoading: false
+  //   }
+  // }),
+  //
+  // on(ProductActions.updateProductFailure, (state, {error, type}) => {
+  //   console.log(type);
+  //   return {
+  //     ...state,
+  //     isLoading: false,
+  //     error: error
+  //   }
+  // }),
 
 )

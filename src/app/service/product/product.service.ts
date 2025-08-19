@@ -43,5 +43,13 @@ export class ProductService {
     });
   }
 
+  // updateProduct(id:string, product: ProductModel ,idToken: string) {
+  //   return this.http.put<ProductModel>(`http://localhost:3000/product/${id}`,product,{
+  //     headers: {
+  //       Authorization: idToken
+  //     }
+  //   });
+  // }
+
 
 }

@@ -24,5 +24,9 @@ export const routes: Routes = [
   {
     path: 'delete',
     loadComponent: () => import('../app/pages/delete/delete.component').then(m => m.DeleteComponent)
+  },
+  {
+    path: 'put',
+    loadComponent: () => import('../app/pages/put/put.component').then(m => m.PutComponent)
   }
 ];
