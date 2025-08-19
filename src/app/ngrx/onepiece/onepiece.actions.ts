@@ -13,7 +13,6 @@ export const getAllOnepieceCharactersFailure = createAction(
   '[Onepiece] getAllOnepieceCharactersFailure', props<{error: any}>()
 )
 
-
 export const getOnepieceCharacterById = createAction(
   '[Onepiece] getOnepieceCharacterById', props<{id: string}>()
 )

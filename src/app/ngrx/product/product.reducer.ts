@@ -137,7 +137,7 @@ export const productReducer = createReducer(
   }),
 
   //get product by id
-  on(ProductActions.getProductDetail, (state, {productId, type}) => {
+  on(ProductActions.getProductDetail, (state, {productId, type, idToken}) => {
     console.log(type);
     return {
       ...state,
@@ -166,8 +166,7 @@ export const productReducer = createReducer(
   }),
 
 
-
-  on(ProductActions.createProduct, (state, {product,type}) =>{
+  on(ProductActions.createProduct, (state, {type,idToken}) =>{
     console.log(type);
     return {
       ...state,
@@ -176,16 +175,44 @@ export const productReducer = createReducer(
     }
   }),
 
-  on(ProductActions.createProductSuccess,(state, {products,type}) =>{
+  on(ProductActions.createProductSuccess,(state,{product, type})=>{
     console.log(type);
     return {
       ...state,
-      productList: products,
+      productDetail: product,
       isLoading: false
     }
   }),
 
   on(ProductActions.createProductFailure, (state, {error, type}) => {
+    console.log(type);
+    return {
+      ...state,
+      isLoading: false,
+      error: error
+    }
+  }),
+
+  on(ProductActions.deleteProduct, (state, {type, idToken, productId}) => {
+    console.log(type);
+    return {
+      ...state,
+      productDetail: <ProductModel>{},
+      isLoading: true,
+      error: null
+    }
+  }),
+
+  on(ProductActions.deleteProductSuccess, (state, {product, type}) => {
+    console.log(type);
+    return {
+      ...state,
+      productDetail: product,
+      isLoading: false
+    }
+  }),
+
+  on(ProductActions.deleteProductFailure, (state, {error, type}) => {
     console.log(type);
     return {
       ...state,

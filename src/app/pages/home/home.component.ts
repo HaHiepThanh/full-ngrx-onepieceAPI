@@ -6,13 +6,6 @@ import {Observable, Subscription} from 'rxjs';
 import * as OnePieceActions from '../../ngrx/onepiece/onepiece.actions';
 import * as ProductActions from '../../ngrx/product/product.actions'
 import * as AuthActions from '../../ngrx/auth/auth.actions';
-import {
-  MatCard, MatCardActions,
-  MatCardContent,
-  MatCardHeader, MatCardImage,
-  MatCardSubtitle,
-  MatCardTitle
-} from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
 import {AsyncPipe, DecimalPipe} from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -23,7 +16,6 @@ import {ProductService} from '../../service/product/product.service';
 import {ProductModel} from '../../module/product.model';
 import {ProductState} from '../../ngrx/product/product.state';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {MatFormField, MatHint, MatInput, MatLabel, MatSuffix} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {AuthService} from '../../service/auth/auth.service';
 import { registerLocaleData } from '@angular/common';
@@ -34,24 +26,9 @@ registerLocaleData(localeVi);
   selector: 'app-home',
   imports: [
     MatProgressSpinnerModule,
-    MatCard,
-    MatCardHeader,
-    MatCardTitle,
-    MatCardSubtitle,
-    MatCardContent,
-    MatCardActions,
-    MatButton,
     AsyncPipe,
-    MatFormField,
-    MatLabel,
-    MatInput,
-    MatSuffix,
-    MatHint,
-    MatFormField,
-    MatLabel,
     MatIconModule,
     ReactiveFormsModule,
-    MatCardImage,
     DecimalPipe,
   ],
   templateUrl: './home.component.html',
@@ -174,30 +151,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.productsList$ = this.store.select('product', 'productList');
   }
 
-  productForm = new FormGroup({
-    id: new FormControl(''),
-    name: new FormControl(''),
-    price: new FormControl(0),
-    description: new FormControl(''),
-    image: new FormControl('')
-  });
-
-  addProduct(){
-    if (this.productForm.valid) {
-      const newProduct: ProductModel = {
-        id: this.productForm.value.id || '',
-        name: this.productForm.value.name || '',
-        price: this.productForm.value.price || 0,
-        description: this.productForm.value.description || '',
-        image: this.productForm.value.image || ''
-      };
-      console.log(newProduct);
-      this.store.dispatch(ProductActions.createProduct({product: newProduct}));
-      this.productForm.reset();
-    }else {
-      console.error('Form is invalid');
-    }
-  }
 
   ngOnInit() {
     this.subscriptions.push(
@@ -245,12 +198,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.router.navigate(['/detail',id]).then()
   }
 
-  loginWithGoogle() {
-    this.store.dispatch(AuthActions.login())
-  }
-
-  logout() {
-    this.store.dispatch(AuthActions.logout())
-  }
+  // loginWithGoogle() {
+  //   this.store.dispatch(AuthActions.login())
+  // }
+  //
+  // logout() {
+  //   this.store.dispatch(AuthActions.logout())
+  // }
 
 }

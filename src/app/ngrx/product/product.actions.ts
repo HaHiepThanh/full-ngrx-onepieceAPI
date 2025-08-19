@@ -62,15 +62,26 @@ export const getProductDetailFailure = createAction(
   '[Product] Get Product Detail Failure', props<{error: any}>()
 );
 
-
 export const createProduct = createAction(
-  '[Product] Create Product', props<{ product: ProductModel }>()
-)
+  '[Product] Create Product', props<{product:ProductModel,idToken:string}>()
+);
 
 export const createProductSuccess = createAction(
-  '[Product] Create Product Success', props<{products: ProductModel[]}>()
+  '[Product] Create Product Success', props<{product: ProductModel}>()
 );
 
 export const createProductFailure = createAction(
   '[Product] Create Product Failure', props<{error: any}>()
+);
+
+export const deleteProduct = createAction(
+  '[Product] Delete Product', props<{productId: string, idToken: string}>()
+);
+
+export const deleteProductSuccess = createAction(
+  '[Product] Delete Product Success', props<{product: ProductModel}>()
+);
+
+export const deleteProductFailure = createAction(
+  '[Product] Delete Product Failure', props<{error: any}>()
 );

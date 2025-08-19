@@ -27,8 +27,20 @@ export class ProductService {
     });
   }
 
-  createProduct(product: ProductModel) {
-    return this.http.post<ProductModel[]>('http://localhost:3000/product', product);
+  createProduct(product: ProductModel,idToken: string) {
+    return this.http.post<ProductModel>('http://localhost:3000/product', product,{
+      headers: {
+        Authorization: idToken
+      }
+    });
+  }
+
+  deleteProduct(id :string, idToken: string) {
+    return this.http.delete<ProductModel>(`http://localhost:3000/product/${id}`, {
+      headers: {
+        Authorization: idToken
+      }
+    });
   }
 
 

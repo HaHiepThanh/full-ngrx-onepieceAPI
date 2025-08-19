@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
 import {Auth} from '@angular/fire/auth';
 import {Store} from '@ngrx/store';
@@ -7,11 +7,14 @@ import {AuthState} from './ngrx/auth/auth.state';
 import * as AuthActions from './ngrx/auth/auth.actions';
 import * as ProductActions from './ngrx/product/product.actions';
 import {ProductModel} from './module/product.model';
+import {MatToolbar} from '@angular/material/toolbar';
+import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatToolbar, MatIconButton, MatIconModule, RouterLink, MatButton],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -41,7 +44,6 @@ export class AppComponent implements OnInit {
         }
         this.store.dispatch(AuthActions.storeCurrentUser({user:user, IdToken: idToken}))
         this.store.dispatch(ProductActions.getAllProducts({idToken: this.idToken}));
-
       } else {
         console.log('No user is signed in.');
       }

@@ -93,15 +93,14 @@ export const getProductDetailEffect = createEffect(
   {functional: true}
 );
 
-
 export const createProductEffect = createEffect(
   (actions$ = inject(Actions), productService= inject(ProductService)) =>{
     return actions$.pipe(
       ofType(ProductActions.createProduct),
-      switchMap((action) => productService.createProduct(action.product).pipe(
-          map((products) => {
-            console.log(products);
-            return ProductActions.createProductSuccess({products: products});
+      switchMap((action) => productService.createProduct(action.product, action.idToken).pipe(
+          map((product) => {
+            console.log('Product created successfully');
+            return ProductActions.createProductSuccess({product: product});
           }),
           catchError((error: {message: any; }) =>
             of(ProductActions.createProductFailure({error})))
@@ -111,3 +110,41 @@ export const createProductEffect = createEffect(
   },
   {functional: true}
 );
+
+// export const updateProductEffect = createEffect(
+//   (actions$ = inject(Actions), productService= inject(ProductService)) =>{
+//     return actions$.pipe(
+//       ofType(ProductActions.updateProduct),
+//       switchMap((action) => productService.updateProduct(action.product, action.idToken).pipe(
+//           map((product) => {
+//             console.log('Product updated successfully');
+//             return ProductActions.updateProductSuccess({product: product});
+//           }),
+//           catchError((error: {message: any; }) =>
+//             of(ProductActions.updateProductFailure({error})))
+//         )
+//       )
+//     )
+//   },
+//   {functional: true}
+// );
+
+export const deleteProductEffect = createEffect(
+  (actions$ = inject(Actions), productService= inject(ProductService)) =>{
+    return actions$.pipe(
+      ofType(ProductActions.deleteProduct),
+      switchMap((action) => productService.deleteProduct(action.productId, action.idToken).pipe(
+          map((product) => {
+            console.log('Product deleted successfully');
+            return ProductActions.deleteProductSuccess({product: product});
+          }),
+          catchError((error: {message: any; }) =>
+            of(ProductActions.deleteProductFailure({error})))
+        )
+      )
+    )
+  },
+  {functional: true}
+);
+
+
