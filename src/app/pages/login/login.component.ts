@@ -44,7 +44,7 @@ export class LoginComponent {
         }
         this.store.dispatch(AuthActions.storeCurrentUser({user:user, IdToken: IdToken}));
       }else{
-        console.log('No user is signed in');
+        // console.log('No user is signed in');
       }
     });
   }

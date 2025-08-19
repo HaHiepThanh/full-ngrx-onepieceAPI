@@ -38,43 +38,64 @@
 <!--</div>-->
 
 <div class="container" [formGroup]="productForm">
+  <div class="form-input">
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>id</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="id">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>id</mat-label>
-    <input matInput placeholder="Placeholder" formControlName="id">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>name</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="name">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>name</mat-label>
-    <input matInput placeholder="Placeholder" formControlName="name">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>description</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="description">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>description</mat-label>
-    <input matInput placeholder="Placeholder" formControlName="description">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>price</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="price">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>price</mat-label>
-    <input matInput placeholder="Placeholder" formControlName="price">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>image</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="image">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>image</mat-label>
-    <input matInput placeholder="Placeholder" formControlName="image">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
+    <button mat-button (click)="addProduct()">Submit</button>
 
-  <button mat-button (click)="addProduct()">Submit</button>
+  </div>
+  <div class="productList">
+      @for(item of (productsList$|async); track $index) {
+        <div class="card" (click)="navigateToDetail(item.id)">
+          <div class="card-name">
+            <p>{{item.name}}</p>
+          </div>
+          <div class="card-description">
+            <p>{{item.description}}</p>
+          </div>
+          <div class="card-image">
+            <img [src]="item.image" alt="{{item.name}}">
+          </div>
+          <div class="card-price">
+            <p>{{item.price | number: '1.0-0'}}đ</p>
+          </div>
+        </div>
+      }
+    </div>
 
 </div>
+
 

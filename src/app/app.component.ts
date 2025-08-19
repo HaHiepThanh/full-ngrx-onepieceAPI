@@ -6,6 +6,7 @@ import {Store} from '@ngrx/store';
 import {AuthState} from './ngrx/auth/auth.state';
 import * as AuthActions from './ngrx/auth/auth.actions';
 import * as ProductActions from './ngrx/product/product.actions';
+import {ProductModel} from './module/product.model';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   subscriptions: Subscription[] = [];
   idToken$ !: Observable<string>
   idToken: string = '';
+
   constructor(
     private auth: Auth,
     private store: Store<{
@@ -39,9 +41,6 @@ export class AppComponent implements OnInit {
         }
         this.store.dispatch(AuthActions.storeCurrentUser({user:user, IdToken: idToken}))
         this.store.dispatch(ProductActions.getAllProducts({idToken: this.idToken}));
-
-
-
 
       } else {
         console.log('No user is signed in.');

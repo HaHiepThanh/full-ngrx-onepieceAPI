@@ -35,88 +35,128 @@
 
 <router-outlet></router-outlet>
 
-<div class="onepiece-container">
-  @if (isLoading$ | async) {
-    <div class="loading-wrap">
-      <mat-spinner diameter="56"></mat-spinner>
+<!--<div class="onepiece-container">-->
+<!--  @if (isLoading$ | async) {-->
+<!--    <div class="loading-wrap">-->
+<!--      <mat-spinner diameter="56"></mat-spinner>-->
+<!--    </div>-->
+<!--  } @else {-->
+<!--    @if (characterDetail$ | async; as item) {-->
+<!--      <mat-card class="onepiece-card" [ngClass]="{'yonko': item.crew?.is_yonko}">-->
+<!--        <div class="flag-top" aria-hidden="true">-->
+<!--          @for (_ of [1,2,3,4,5,6]; track $index) {-->
+<!--            <span></span>-->
+<!--          }-->
+<!--        </div>-->
+<!--        <mat-card-header class="card-header">-->
+<!--          <div mat-card-avatar class="avatar" [ngClass]="{'no-fruit': !item.fruit?.filename}">-->
+<!--            @if (item.fruit?.filename) {-->
+<!--              <img [src]="item.fruit?.filename" [alt]="item.fruit?.name" />-->
+<!--            } @else {-->
+<!--              <div class="no-fruit-text">No Devil's Fruit<br/>Consumption</div>-->
+<!--            }-->
+<!--          </div>-->
+
+<!--          <div class="title-wrap">-->
+<!--            <mat-card-title class="name">{{ item.name }}</mat-card-title>-->
+<!--            <mat-card-subtitle class="role">-->
+<!--              {{ item.job }} — <span class="crew-name">{{ item.crew?.name }}</span>-->
+<!--              @if (item.crew?.is_yonko) {-->
+<!--                <span class="yonko-badge" aria-label="Yonko">☠️ YONKO</span>-->
+<!--              }-->
+<!--            </mat-card-subtitle>-->
+<!--          </div>-->
+<!--        </mat-card-header>-->
+
+<!--        <mat-card-content>-->
+<!--          <div class="hero">-->
+<!--            &lt;!&ndash;          <div class="portrait">&ndash;&gt;-->
+<!--            &lt;!&ndash;            @if (item.portrait) {&ndash;&gt;-->
+<!--            &lt;!&ndash;              <img [src]="item.portrait" alt="{{item.name}} portrait" />&ndash;&gt;-->
+<!--            &lt;!&ndash;            } @else {&ndash;&gt;-->
+<!--            &lt;!&ndash;              <div class="sketch">★</div>&ndash;&gt;-->
+<!--            &lt;!&ndash;            }&ndash;&gt;-->
+<!--            &lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--            <div class="info">-->
+<!--              <ul class="stats">-->
+<!--                @for (stat of [-->
+<!--                  {label: 'Age', value: item.age},-->
+<!--                  {label: 'Height', value: item.size},-->
+<!--                  {label: 'Bounty', value: item.bounty + ' ฿', bounty: true},-->
+<!--                  {label: 'Status', value: item.status}-->
+<!--                ]; track $index) {-->
+<!--                  <li>-->
+<!--                    <span class="label">{{ stat.label }}</span>-->
+<!--                    <span class="value" [ngClass]="{'bounty': stat.bounty}">{{ stat.value }}</span>-->
+<!--                  </li>-->
+<!--                }-->
+<!--              </ul>-->
+
+<!--              @if (item.fruit) {-->
+<!--                <div class="fruit-block">-->
+<!--                  <h4>Trái ác quỷ</h4>-->
+<!--                  <p class="fruit-name">{{ item.fruit.roman_name }} — <em>{{ item.fruit.type }}</em></p>-->
+<!--                  <p class="fruit-desc">{{ item.fruit.description }}</p>-->
+<!--                </div>-->
+<!--              }-->
+
+<!--              <div class="crew-meta">-->
+<!--                <div class="crew-number">-->
+<!--                  <span class="crew-count">{{ item.crew?.number || '—' }}</span>-->
+<!--                  <span class="crew-label">Crew members</span>-->
+<!--                </div>-->
+<!--                <div class="crew-prime">Prime: {{ item.crew?.total_prime }}</div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </mat-card-content>-->
+<!--        <div class="ribbon">MUGIWARA</div>-->
+<!--        <button mat-button (click)="navigateToHome()">Back to home page</button>-->
+<!--      </mat-card>-->
+<!--    } @else {-->
+<!--      <div class="no-data">Không có dữ liệu nhân vật.</div>-->
+<!--    }-->
+<!--  }-->
+<!--</div>-->
+
+<div class="detail-container">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <mat-icon>home</mat-icon>
+    <a href="#">Trang chủ</a> /
+    <a href="#">Laptop</a> /
+    <a href="#">Mac</a> /
+    <span>{{ this.productDetail.description }}</span>
+  </nav>
+
+  <!-- Product Details -->
+  <div class="product-detail">
+    <!-- Images -->
+    <div class="product-images">
+      <img src="{{this.productDetail.image}}" alt="Main Product Image"
+           class="main-image">
     </div>
-  } @else {
-    @if (characterDetail$ | async; as item) {
-      <mat-card class="onepiece-card" [ngClass]="{'yonko': item.crew?.is_yonko}">
-        <div class="flag-top" aria-hidden="true">
-          @for (_ of [1,2,3,4,5,6]; track $index) {
-            <span></span>
-          }
+
+    <!-- Info -->
+    <div class="product-info">
+      <h1>{{ this.productDetail.name }}</h1>
+      <div class="price">
+        <p class="sale-price">{{productDetail.price | number: '1.0-0'}}đ</p>
+      </div>
+
+      <div class="actions_wrraper">
+
+        <div class="actions">
+          <button class="add-to-cart" >Add to Cart</button>
+          <button class="buy-now">Buy Now</button>
         </div>
-        <mat-card-header class="card-header">
-          <div mat-card-avatar class="avatar" [ngClass]="{'no-fruit': !item.fruit?.filename}">
-            @if (item.fruit?.filename) {
-              <img [src]="item.fruit?.filename" [alt]="item.fruit?.name" />
-            } @else {
-              <div class="no-fruit-text">No Devil's Fruit<br/>Consumption</div>
-            }
-          </div>
-
-          <div class="title-wrap">
-            <mat-card-title class="name">{{ item.name }}</mat-card-title>
-            <mat-card-subtitle class="role">
-              {{ item.job }} — <span class="crew-name">{{ item.crew?.name }}</span>
-              @if (item.crew?.is_yonko) {
-                <span class="yonko-badge" aria-label="Yonko">☠️ YONKO</span>
-              }
-            </mat-card-subtitle>
-          </div>
-        </mat-card-header>
-
-        <mat-card-content>
-          <div class="hero">
-            <!--          <div class="portrait">-->
-            <!--            @if (item.portrait) {-->
-            <!--              <img [src]="item.portrait" alt="{{item.name}} portrait" />-->
-            <!--            } @else {-->
-            <!--              <div class="sketch">★</div>-->
-            <!--            }-->
-            <!--          </div>-->
-
-            <div class="info">
-              <ul class="stats">
-                @for (stat of [
-                  {label: 'Age', value: item.age},
-                  {label: 'Height', value: item.size},
-                  {label: 'Bounty', value: item.bounty + ' ฿', bounty: true},
-                  {label: 'Status', value: item.status}
-                ]; track $index) {
-                  <li>
-                    <span class="label">{{ stat.label }}</span>
-                    <span class="value" [ngClass]="{'bounty': stat.bounty}">{{ stat.value }}</span>
-                  </li>
-                }
-              </ul>
-
-              @if (item.fruit) {
-                <div class="fruit-block">
-                  <h4>Trái ác quỷ</h4>
-                  <p class="fruit-name">{{ item.fruit.roman_name }} — <em>{{ item.fruit.type }}</em></p>
-                  <p class="fruit-desc">{{ item.fruit.description }}</p>
-                </div>
-              }
-
-              <div class="crew-meta">
-                <div class="crew-number">
-                  <span class="crew-count">{{ item.crew?.number || '—' }}</span>
-                  <span class="crew-label">Crew members</span>
-                </div>
-                <div class="crew-prime">Prime: {{ item.crew?.total_prime }}</div>
-              </div>
-            </div>
-          </div>
-        </mat-card-content>
-        <div class="ribbon">MUGIWARA</div>
-        <button mat-button (click)="navigateToHome()">Back to home page</button>
-      </mat-card>
-    } @else {
-      <div class="no-data">Không có dữ liệu nhân vật.</div>
-    }
-  }
+      </div>
+      <div class="tab-content">
+        <p>{{productDetail.description}}</p>
+      </div>
+    </div>
+  </div>
 </div>
+
 

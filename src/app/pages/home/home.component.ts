@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, LOCALE_ID, OnDestroy, OnInit} from '@angular/core';
 import {CharacterState} from '../../ngrx/onepiece/onepiece.state';
 import {Store} from '@ngrx/store';
 import {CharacterItemModel} from '../../module/characterItem.model';
@@ -9,12 +9,12 @@ import * as AuthActions from '../../ngrx/auth/auth.actions';
 import {
   MatCard, MatCardActions,
   MatCardContent,
-  MatCardHeader,
+  MatCardHeader, MatCardImage,
   MatCardSubtitle,
   MatCardTitle
 } from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, DecimalPipe} from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {Router} from '@angular/router';
 import {Auth} from '@angular/fire/auth';
@@ -26,18 +26,22 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatHint, MatInput, MatLabel, MatSuffix} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {AuthService} from '../../service/auth/auth.service';
+import { registerLocaleData } from '@angular/common';
+import localeVi from '@angular/common/locales/vi';
+
+registerLocaleData(localeVi);
 @Component({
   selector: 'app-home',
   imports: [
     MatProgressSpinnerModule,
-    // MatCard,
-    // MatCardHeader,
-    // MatCardTitle,
-    // MatCardSubtitle,
-    // MatCardContent,
-    // MatCardActions,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatCardContent,
+    MatCardActions,
     MatButton,
-    // AsyncPipe,
+    AsyncPipe,
     MatFormField,
     MatLabel,
     MatInput,
@@ -46,10 +50,15 @@ import {AuthService} from '../../service/auth/auth.service';
     MatFormField,
     MatLabel,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardImage,
+    DecimalPipe,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  providers: [
+    { provide: LOCALE_ID, useValue: 'vi' }
+  ]
 })
 // export class HomeComponent implements OnInit ,OnDestroy{
 //
@@ -147,8 +156,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   productsList$ !: Observable<ProductModel[]>;
   idToken: string = '';
 
-
-
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -219,8 +226,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       })
     )
-    if(this.idToken !== ''){
-    }
+    // if(this.idToken !== ''){
+    // }
 
   }
 
