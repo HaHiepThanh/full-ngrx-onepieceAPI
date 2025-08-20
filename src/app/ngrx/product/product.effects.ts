@@ -129,22 +129,21 @@ export const deleteProductEffect = createEffect(
   {functional: true}
 );
 
-// export const updateProductEffect = createEffect(
-//   (actions$ = inject(Actions), productService= inject(ProductService)) =>{
-//     return actions$.pipe(
-//       ofType(ProductActions.updateProduct),
-//       switchMap((action) => productService.updateProduct(action.id,action.product,action.idToken).pipe(
-//           map((product) => {
-//             console.log('Product updated successfully');
-//             return ProductActions.updateProductSuccess({product: product});
-//           }),
-//           catchError((error: {message: any; }) =>
-//             of(ProductActions.updateProductFailure({error})))
-//         )
-//       )
-//     )
-//   },
-//   {functional: true}
-// );
-
+export const updateProductEffect = createEffect(
+  (actions$ = inject(Actions), productService= inject(ProductService)) =>{
+    return actions$.pipe(
+      ofType(ProductActions.updateProduct),
+      switchMap((action) => productService.updateProduct(action.product, action.idToken).pipe(
+          map((product) => {
+            console.log('Product updated successfully');
+            return ProductActions.updateProductSuccess({product: product});
+          }),
+          catchError((error: {message: any; }) =>
+            of(ProductActions.updateProductFailure({error})))
+        )
+      )
+    )
+  },
+  {functional: true}
+);
 

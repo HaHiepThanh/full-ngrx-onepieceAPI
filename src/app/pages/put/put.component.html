@@ -1,44 +1,41 @@
-<!--<div class="container">-->
-<!--  <div class="form-input" [formGroup]="productForm">-->
-<!--    <mat-form-field class="form" appearance="outline">-->
-<!--      <mat-label>id</mat-label>-->
-<!--      <input matInput placeholder="Placeholder" formControlName="id">-->
-<!--      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
-<!--      <mat-hint>Hint</mat-hint>-->
-<!--    </mat-form-field>-->
+<div class="container">
+  <div class="form-input" [formGroup]="productForm">
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>id</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="id">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-<!--    <button mat-button (click)="findProductById()">Match the id with Database</button>-->
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>name</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="name">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>description</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="description">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-<!--    <mat-form-field class="form" appearance="outline">-->
-<!--      <mat-label>name</mat-label>-->
-<!--      <input matInput placeholder="Placeholder" formControlName="name">-->
-<!--      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
-<!--      <mat-hint>Hint</mat-hint>-->
-<!--    </mat-form-field>-->
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>price</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="price">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-<!--    <mat-form-field class="form" appearance="outline">-->
-<!--      <mat-label>description</mat-label>-->
-<!--      <input matInput placeholder="Placeholder" formControlName="description">-->
-<!--      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
-<!--      <mat-hint>Hint</mat-hint>-->
-<!--    </mat-form-field>-->
+    <mat-form-field class="form" appearance="outline">
+      <mat-label>image</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="image">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-<!--    <mat-form-field class="form" appearance="outline">-->
-<!--      <mat-label>price</mat-label>-->
-<!--      <input matInput placeholder="Placeholder" formControlName="price">-->
-<!--      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
-<!--      <mat-hint>Hint</mat-hint>-->
-<!--    </mat-form-field>-->
+    <button mat-button (click)="updateProduct()">Update Product</button>
 
-<!--    <mat-form-field class="form" appearance="outline">-->
-<!--      <mat-label>image</mat-label>-->
-<!--      <input matInput placeholder="Placeholder" formControlName="image">-->
-<!--      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
-<!--      <mat-hint>Hint</mat-hint>-->
-<!--    </mat-form-field>-->
-
-<!--    <button mat-button (click)="updateProduct()">Update Product</button>-->
-
-<!--  </div>-->
-<!--</div>-->
+  </div>
+</div>
